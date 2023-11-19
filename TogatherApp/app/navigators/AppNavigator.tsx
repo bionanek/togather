@@ -20,6 +20,7 @@ import { useStores } from "../models" // @demo remove-current-line
 import { DemoNavigator, DemoTabParamList } from "./DemoNavigator" // @demo remove-current-line
 import { navigationRef, useBackButtonHandler } from "./navigationUtilities"
 import { colors } from "app/theme"
+import { MainTabNavigator, MainTabParamList } from "./MainTabNavigator"
 
 /**
  * This type allows TypeScript to know what routes are defined in this navigator
@@ -40,6 +41,7 @@ export type AppStackParamList = {
   Demo: NavigatorScreenParams<DemoTabParamList> // @demo remove-current-line
   // 🔥 Your screens go here
   DevScreen: undefined
+  Home: NavigatorScreenParams<MainTabParamList>
   // IGNITE_GENERATOR_ANCHOR_APP_STACK_PARAM_LIST
 }
 
@@ -63,13 +65,16 @@ const AppStack = observer(function AppStack() {
     authenticationStore: { isAuthenticated },
   } = useStores()
 
-
   return (
     <Stack.Navigator
-      screenOptions={{ headerShown: false, navigationBarColor: colors.background }} 
+      screenOptions={{
+        headerShown: false,
+        navigationBarColor: colors.background,
+        contentStyle: { backgroundColor: "red", padding: 0 },
+      }}
     >
-      <Stack.Screen name="DevScreen" component={Screens.DevScreen} />
-
+      <Stack.Screen name="Home" component={MainTabNavigator} />
+      {/* <Stack.Screen name="Login" component={Screens.LoginScreen} /> */}
     </Stack.Navigator>
   )
 

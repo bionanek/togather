@@ -25,7 +25,7 @@ export const NewEventCard: FC<NewEventCardProps> = observer(function NewEventCar
       <View>
         <Text>{props.title}</Text>
         <View>
-          <Text>{props.location.city}</Text>
+          <Text>Aman is a puss, mate</Text>
           <Text>{new Date(props.date).toLocaleDateString()}</Text>
         </View>
       </View>
